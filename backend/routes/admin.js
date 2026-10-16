@@ -6,7 +6,7 @@ const Admin = require('../models/Admin');
 const bcrypt = require('bcryptjs');
 const requiereLogin = require('../middleware/requiere-login');
 
-// Login GET
+// Login GET muestra el formulario, si ya iniciaste sesion pasa a productos directamente
 router.get('/login', (req, res) => {
   if (req.session.adminId) {
     return res.redirect('/admin/productos');
@@ -14,7 +14,7 @@ router.get('/login', (req, res) => {
   res.render('admin/login', { error: null });
 });
 
-// Login POST
+// Login POST se manda el formulario y si es correcto se crea la session y pasa a productos
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Logout
+// Logout se cierra y elimina la session
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) console.error('Error al cerrar sesión:', err);
@@ -45,7 +45,7 @@ router.get('/logout', (req, res) => {
   });
 });
 
-// Proteger todas las rutas de abajo
+// Proteger todas las rutas de abajo (solo para admins)
 router.use(requiereLogin);
 
 // Listar productos
