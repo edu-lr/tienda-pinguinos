@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Modelo de los Productos "Items" del pedido
 const pedidoItemSchema = new mongoose.Schema({
   producto: {
     type: mongoose.Schema.Types.ObjectId,
@@ -16,10 +17,14 @@ const pedidoItemSchema = new mongoose.Schema({
     required: true,
     min: 0
   }
+   // Sin id porque ya van dentro del Pedido
 }, { _id: false });
 
+// Pedidos con los productos
 const pedidoSchema = new mongoose.Schema({
+
   items: [pedidoItemSchema],
+
   cliente: {
     nombre: {
       type: String,
