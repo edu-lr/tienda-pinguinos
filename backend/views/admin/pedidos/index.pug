@@ -1,0 +1,34 @@
+extends ../../layout
+
+block content
+  h2 Pedidos
+  a.btn.volver(href="/admin/productos") ← Volver a productos
+
+  if error
+    .error= error
+
+  if pedidos && pedidos.length > 0
+    table.pedidos-table
+      thead
+        tr
+          th Fecha
+          th Cliente
+          th Dirección
+          th Items
+          th Total
+          th Estado
+      tbody
+        each pedido in pedidos
+          tr
+            td= pedido.createdAt.toLocaleDateString('es-ES')
+            td= pedido.cliente.nombre
+            td= pedido.cliente.direccion
+            td
+              ul
+                each item in pedido.items
+                  li #{item.producto?.nombre || 'Producto eliminado'} x#{item.cantidad} - $#{item.precioUnitario.toFixed(2)} c/u
+            td $#{pedido.total.toFixed(2)}
+            td
+              span.estado(class=pedido.estado)= pedido.estado
+  else
+    p.no-pedidos No hay pedidos aún.

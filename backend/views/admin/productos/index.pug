@@ -1,0 +1,37 @@
+extends ../../layout
+
+block content
+  .productos-header
+    h2 Productos
+    a.btn.nuevo(href="/admin/productos/nuevo") + Nuevo producto
+
+  if error
+    .error= error
+
+  if productos && productos.length > 0
+    table.productos-table
+      thead
+        tr
+          th Nombre
+          th Precio
+          th Stock
+          th Imagen
+          th Acciones
+      tbody
+        each producto in productos
+          tr
+            td= producto.nombre
+            td $#{producto.precio.toFixed(2)}
+            td= producto.stock
+            td
+              if producto.imagen
+                img(src=producto.imagen, alt=producto.nombre, class="thumb")
+              else
+                span.sin-imagen Sin imagen
+            td.acciones
+              a(href="/admin/productos/#{producto._id}/editar") Editar
+              form(method="POST" action="/admin/productos/#{producto._id}?_method=DELETE" class="inline" onsubmit="return confirm('¿Eliminar este producto?')")
+                button(type="submit" class="btn-eliminar") Eliminar
+  else
+    p.no-productos No hay productos aún. ¡Crea el primero!
+    a.btn.nuevo(href="/admin/productos/nuevo") Crear producto

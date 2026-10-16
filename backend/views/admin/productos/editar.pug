@@ -1,0 +1,26 @@
+extends ../../layout
+
+block content
+  h2 Editar producto
+  a.btn.volver(href="/admin/productos") ← Volver
+
+  if error
+    .error= error
+
+  form(method="POST" action="/admin/productos/#{producto._id}?_method=PUT")
+    .form-group
+      label(for="nombre") Nombre *
+      input(type="text" id="nombre" name="nombre" value=producto.nombre required)
+    .form-group
+      label(for="descripcion") Descripción *
+      textarea(id="descripcion" name="descripcion" required)= producto.descripcion
+    .form-group
+      label(for="precio") Precio *
+      input(type="number" id="precio" name="precio" step="0.01" min="0" value=producto.precio required)
+    .form-group
+      label(for="stock") Stock *
+      input(type="number" id="stock" name="stock" min="0" value=producto.stock required)
+    .form-group
+      label(for="imagen") URL de imagen
+      input(type="url" id="imagen" name="imagen" value=producto.imagen || '')
+    button(type="submit") Guardar cambios

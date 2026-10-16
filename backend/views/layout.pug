@@ -1,0 +1,20 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title || 'Panel de Admin - Tienda de los Pingüinos'}
+    link(rel="stylesheet", href="/css/admin.css")
+  body
+    header.admin-header
+      h1 🐧 Panel de Admin - Tienda de los Pingüinos
+      nav
+        a(href="/admin/productos") Productos
+        | 
+        a(href="/admin/pedidos") Pedidos
+        | 
+        a(href="/admin/logout") Cerrar sesión
+    main
+      block content
+    footer
+      p &copy; 2026 Tienda de los Pingüinos

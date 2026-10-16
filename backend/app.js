@@ -41,8 +41,7 @@ app.get('/', (req, res) => {
   res.redirect('/admin/productos');
 });
 
-// Importar rutas cuando existan
-// app.use('/admin', require('./routes/admin'));
+app.use('/admin', require('./routes/admin'));
 
 const PORT = process.env.PORT || 3000;
 

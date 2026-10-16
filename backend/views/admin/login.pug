@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  .login-container
+    h2 Iniciar sesión
+    if error
+      .error= error
+    form(method="POST" action="/admin/login")
+      .form-group
+        label(for="username") Usuario
+        input(type="text" id="username" name="username" required autocomplete="username")
+      .form-group
+        label(for="password") Contraseña
+        input(type="password" id="password" name="password" required autocomplete="current-password")
+      button(type="submit") Entrar
