@@ -2,8 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const methodOverride = require('method-override');
 const path = require('path');
+const mongoose = require('mongoose');
 
 const app = express();
+
+// Conexión a MongoDB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/tienda-pinguinos')
+  .then(() => console.log('✅ MongoDB conectado (frontend)'))
+  .catch(err => console.error('❌ Error conectando a MongoDB:', err));
 
 // Configuración de vistas
 app.set('view engine', 'pug');
