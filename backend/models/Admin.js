@@ -32,6 +32,8 @@ adminSchema.pre('save', async function(next) {
 
 // Se compara las contraseñas Hasheadas
 adminSchema.methods.compararPassword = async function(password) {
+  
+  // se compara la contraseña con la guardada (this.password) 
   return bcrypt.compare(password, this.password);
 };
 
