@@ -26,7 +26,7 @@ block content
             td
               ul
                 each item in pedido.items
-                  li #{item.producto?.nombre || 'Producto eliminado'} x#{item.cantidad} - $#{item.precioUnitario.toFixed(2)} c/u
+                  li #{item.producto ? item.producto.nombre : 'Producto eliminado'} x#{item.cantidad} - $#{item.precioUnitario.toFixed(2)} c/u
             td $#{pedido.total.toFixed(2)}
             td
               span.estado(class=pedido.estado)= pedido.estado

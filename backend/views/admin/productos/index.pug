@@ -29,8 +29,8 @@ block content
               else
                 span.sin-imagen Sin imagen
             td.acciones
-              a(href="/admin/productos/#{producto._id}/editar") Editar
-              form(method="POST" action="/admin/productos/#{producto._id}?_method=DELETE" class="inline" onsubmit="return confirm('¿Eliminar este producto?')")
+              a(href="/admin/productos/" + producto._id + "/editar") Editar
+              form(method="POST" action="/admin/productos/" + producto._id + "?_method=DELETE" class="inline" onsubmit="return confirm('¿Eliminar este producto?')")
                 button(type="submit" class="btn-eliminar") Eliminar
   else
     p.no-productos No hay productos aún. ¡Crea el primero!
