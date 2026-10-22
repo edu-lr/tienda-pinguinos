@@ -1,0 +1,264 @@
+:root {
+  --hielo: #eaf6ff;
+  --frio: #5db8f5;
+  --oscuro: #22425a;
+  --tinta: #2b3a46;
+  --blanco: #ffffff;
+  --alerta: #d9534f;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--hielo);
+  color: var(--tinta);
+}
+
+.tienda-header {
+  background: var(--oscuro);
+  color: var(--blanco);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tienda-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.tienda-header nav a {
+  color: var(--frio);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.error {
+  background: #fde8e8;
+  color: var(--alerta);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.catalogo {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.producto {
+  background: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(34, 66, 90, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto img,
+.sin-imagen {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hielo);
+  font-size: 4rem;
+}
+
+.producto .info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.producto h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.descripcion {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5a6a76;
+}
+
+.precio {
+  margin: auto 0 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--oscuro);
+}
+
+.producto a {
+  text-decoration: none;
+  background: var(--frio);
+  color: var(--oscuro);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.producto a:hover {
+  background: var(--oscuro);
+  color: var(--blanco);
+}
+
+.producto.agotado {
+  opacity: 0.6;
+}
+
+.sin-stock {
+  background: #f3d4d3;
+  color: var(--alerta);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.vacio {
+  text-align: center;
+  color: #5a6a76;
+}
+
+.detalle {
+  background: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(34, 66, 90, 0.12);
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+}
+
+.detalle .sin-imagen {
+  height: 280px;
+}
+
+.foto-detalle {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.info-detalle h2 {
+  margin-top: 0;
+}
+
+.info-detalle .precio {
+  font-size: 1.4rem;
+}
+
+.stock {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #c7d5de;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.info-detalle button[type="submit"] {
+  background: var(--frio);
+  color: var(--oscuro);
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.info-detalle button[type="submit"]:hover {
+  background: var(--oscuro);
+  color: var(--blanco);
+}
+
+.volver {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--oscuro);
+}
+
+.pedido-confirmado {
+  background: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(34, 66, 90, 0.12);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+.pedido-confirmado h2 {
+  margin-top: 0;
+}
+
+.direccion {
+  font-weight: 600;
+}
+
+.items-pedido {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.items-pedido th,
+.items-pedido td {
+  text-align: left;
+  border-bottom: 1px solid #e3ecf2;
+  padding: 0.5rem 0.3rem;
+  font-size: 0.95rem;
+}
+
+.total {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--oscuro);
+}
+
+.estado {
+  color: #5a6a76;
+}
+
+footer {
+  text-align: center;
+  color: #7a8b96;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+}

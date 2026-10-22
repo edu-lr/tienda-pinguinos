@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .detalle
+    if producto.imagen
+      img(src=producto.imagen, alt=producto.nombre, class="foto-detalle")
+    else
+      .sin-imagen 🐟
+    .info-detalle
+      h2= producto.nombre
+      p.descripcion= producto.descripcion
+      p.precio $#{producto.precio.toFixed(2)}
+
+      if error
+        .error= error
+
+      if producto.stock > 0
+        p.stock Stock disponible: #{producto.stock}
+        form(method="POST" action="/tienda/pedidos")
+          input(type="hidden" name="productoId" value=producto._id)
+          .form-group
+            label(for="cantidad") Cantidad
+            input(type="number" id="cantidad" name="cantidad" min="1" max=producto.stock value="1" required)
+          .form-group
+            label(for="nombre") Tu nombre
+            input(type="text" id="nombre" name="nombre" value=datos.nombre || '' required)
+          .form-group
+            label(for="direccion") Direccion del iglu
+            input(type="text" id="direccion" name="direccion" value=datos.direccion || '' required)
+          button(type="submit") Hacer pedido
+      else
+        span.sin-stock Agotado: sin stock por ahora
+
+      a.volver(href="/tienda") ← Volver al catalogo

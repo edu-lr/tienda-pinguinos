@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  .pedido-confirmado
+    h2 ¡Pedido recibido! 🐧
+    p.saludo ¡Gracias, #{pedido.cliente.nombre}! Tu pescado va en camino a:
+    p.direccion= pedido.cliente.direccion
+
+    table.items-pedido
+      thead
+        tr
+          th Producto
+          th Cantidad
+          th Precio unitario
+          th Subtotal
+      tbody
+        each item in pedido.items
+          tr
+            td= item.producto ? item.producto.nombre : 'Producto eliminado'
+            td x#{item.cantidad}
+            td $#{item.precioUnitario.toFixed(2)}
+            td $#{(item.precioUnitario * item.cantidad).toFixed(2)}
+    p.total Total: $#{pedido.total.toFixed(2)}
+    p.estado Estado del pedido: #{pedido.estado}
+
+    a(href="/tienda") ← Volver al catalogo

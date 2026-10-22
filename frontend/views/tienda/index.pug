@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  h2 Catálogo
+  if error
+    .error= error
+
+  if productos && productos.length > 0
+    ul.catalogo
+      each producto in productos
+        li.producto(class= producto.stock === 0 ? 'agotado' : '')
+          if producto.imagen
+            img(src=producto.imagen, alt=producto.nombre)
+          else
+            .sin-imagen 🐟
+          .info
+            h3= producto.nombre
+            p.descripcion= producto.descripcion
+            p.precio $#{producto.precio.toFixed(2)}
+            if producto.stock === 0
+              span.sin-stock Sin stock
+            else
+              a(href="/tienda/producto/" + producto._id + "") Comprar
+  else
+    if !error
+      p.vacio No hay productos todavía. Paula está gestionando el inventario.

@@ -1,4 +1,7 @@
 require('dotenv').config();
+// Para evitar problemas con el DNS
+require('node:dns').setServers(['1.1.1.1', '8.8.8.8']);
+
 const express = require('express');
 const methodOverride = require('method-override');
 const path = require('path');
@@ -25,8 +28,8 @@ app.get('/', (req, res) => {
   res.redirect('/tienda');
 });
 
-// Importar rutas cuando existan
-// app.use('/tienda', require('./routes/tienda'));
+// Rutas de la tienda
+app.use('/tienda', require('./routes/tienda'));
 
 const PORT = process.env.PORT || 3001;
 
